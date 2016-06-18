@@ -1,6 +1,9 @@
 # Gexit
 Prototype hacked at Popathon Berlin #2
 
+## Demo
+[Demo available here.](https://popathon.github.io/Gexit/hq.html)
+
 ## Install
 You need to have [nodejs](https://nodejs.org/en/) and [npm](https://www.npmjs.com/) installde to run a local development version.
 
