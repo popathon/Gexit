@@ -9,7 +9,7 @@
     }
   ],
   "scripts": {
-    "run": "./node_modules/http-server/bin/http-server"
+    "serve": "./node_modules/http-server/bin/http-server"
   },
   "dependencies": {
     "aframe": "^0.2.0"
