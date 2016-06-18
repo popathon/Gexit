@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script type="text/javascript" src="/dist/main.js"></script>
+	<!-- <script type="text/javascript" src="/node_modules/littlstar-axis/dist/axis.js"></script> -->
+	<script type="text/javascript" src="/node_modules/aframe/dist/aframe.js"></script>
+</head>
+<body>
+	<div id="content" style="width:680px; height:420px"></div>
+
+
+
+
+	<script type="text/javascript">
+        window.onload = function(){
+			var player = document.getElementById('scene');
+			var video = document.getElementById('video');
+			var audioContext = new AudioContext();
+			var audio = document.getElementById("audio");
+			//console.log(player.attrbute(rotation));
+			//console.log("rotation",player.getAttribute(rotation));
+
+			player.camera.rotation.onChangeCallback(function(e){
+				console.log(e);
+			});
+
+			var source = audioContext.createMediaElementSource(audio);
+			var splitter = audioContext.createChannelSplitter(2);
+			var leftGain = audioContext.createGain();
+			var rightGain = audioContext.createGain();
+
+			source.connect(splitter);
+			splitter.connect(leftGain, 0);
+			splitter.connect(rightGain, 1);
+
+			leftGain.connect(audioContext.destination);
+			rightGain.connect(audioContext.destination);
+
+			function render(){
+
+				
+				var pos = player.camera.getWorldDirection().x;
+
+				var lGain = (-pos + 1.0)/2.0;
+				var rGain = (pos + 1.0)/2.0;
+				console.log(lGain, rGain);
+				leftGain.gain.value = lGain;
+				rightGain.gain.value = rGain;
+        		//console.log("WROKINGAAAAA");
+				//console.log("rotation",player.getAttribute("rotation").y);
+				//console.log(player.rotation);
+				//console.log("rotation",player.setAttribute("rotation", {x:0,y:0,z:0}));
+				window.requestAnimationFrame(render);
+			}
+			render();
+
+			setTimeout(function(){
+				console.log("PLAYING");
+				audio.play();
+				video.play();
+			},2000);
+		}
+	</script>
+	<audio src="./assets/audio.wav" id="audio" loop></audio>
+	<a-scene id="scene">
+      <a-assets>
+        <video id="video" src="/assets/test1.mp4" autoplay="false" loop></video>
+      </a-assets>
+
+      <a-videosphere src="#video" rotation="0 180 0" id="sphere"></a-videosphere>
+    </a-scene>
+</body>
+</html>

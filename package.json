@@ -1,0 +1,36 @@
+{
+  "name": "GREXIT",
+  "version": "0.1.0",
+  "description": "VR documentary investigating Germany exiting the EU",
+  "contributors": [
+    {
+      "name": "Matthew Shotton",
+      "email": "matthew.shotton@bbc.co.uk"
+    }
+  ],
+  "scripts": {
+    "run": "./node_modules/http-server/bin/http-server"
+  },
+  "dependencies": {
+    "aframe": "^0.2.0"
+  },
+  "devDependencies": {
+    "babel-core": "^5.6.5",
+    "babel-loader": "^5.1.4",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.11",
+    "http-server": "^0.8.5"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
+      ]
+    ]
+  }
+}
