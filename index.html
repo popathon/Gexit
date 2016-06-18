@@ -53,17 +53,17 @@
 			}
 			render();
 
-			setTimeout(function(){
-				console.log("PLAYING");
-				//audio.play();
-				video.play();
-			},2000);
+			// setTimeout(function(){
+			// 	console.log("PLAYING");
+			// 	//audio.play();
+			// 	video.play();
+			// },2000);
 		}
 	</script>
 	<!-- <audio src="./assets/audio.wav" id="audio" loop></audio> -->
 	<a-scene id="scene">
       <a-assets>
-        <video id="video" src="./assets/main.mp4" autoplay="false" webkit-playsinline loop></video>
+        <video id="video" src="./assets/main.mp4" autoplay="true" webkit-playsinline loop></video>
         <img id="title-image" src="./assets/test/title.png">
       </a-assets>
 		<!-- <a-image id="title" src="#title-image" width="16" height="10"></a-image> -->
